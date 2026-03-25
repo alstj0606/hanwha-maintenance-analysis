@@ -27,7 +27,6 @@ FROM maintenance_raw
 GROUP BY type
 ORDER BY failure_rate_percent DESC;
 """
-
 df_type = pd.read_sql(query_type, engine)
 
 plt.figure(figsize=(8, 5))
@@ -53,7 +52,6 @@ FROM maintenance_raw
 GROUP BY tool_wear_group
 ORDER BY tool_wear_group;
 """
-
 df_wear = pd.read_sql(query_wear, engine)
 
 plt.figure(figsize=(8, 5))
@@ -79,7 +77,6 @@ FROM maintenance_raw
 GROUP BY torque_group
 ORDER BY torque_group;
 """
-
 df_torque = pd.read_sql(query_torque, engine)
 
 plt.figure(figsize=(8, 5))
