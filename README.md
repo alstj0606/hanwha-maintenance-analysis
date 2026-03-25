@@ -99,6 +99,11 @@ SQL 분석 결과를 Python으로 불러와 주요 결과를 그래프로 시각
 ```
 src/analysis.py
 ```
+<img width="606" height="373" alt="image" src="https://github.com/user-attachments/assets/6b171456-f161-4bec-b434-ebae2f72b2bc" />
+<img width="606" height="376" alt="image" src="https://github.com/user-attachments/assets/6206b8fb-46cb-4862-b2da-2515b90f586e" />
+<img width="605" height="376" alt="image" src="https://github.com/user-attachments/assets/cfca7f3f-f7a3-44b6-a4e4-bf102a38f618" />
+
+
 
 
 # 주요 SQL 분석 결과
