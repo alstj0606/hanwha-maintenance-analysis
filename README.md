@@ -63,6 +63,10 @@ Executed deep-dive analytical queries to identify failure patterns across multip
 * Impact of torque fluctuations on machine stability.
 * **Source:** `sql/03_analysis.sql`
 
+<img width="606" height="373" alt="image" src="https://github.com/user-attachments/assets/6b171456-f161-4bec-b434-ebae2f72b2bc" />
+<img width="606" height="376" alt="image" src="https://github.com/user-attachments/assets/6206b8fb-46cb-4862-b2da-2515b90f586e" />
+<img width="605" height="376" alt="image" src="https://github.com/user-attachments/assets/cfca7f3f-f7a3-44b6-a4e4-bf102a38f618" />
+
 ---
 
 ## 5. Key SQL Analysis Results
