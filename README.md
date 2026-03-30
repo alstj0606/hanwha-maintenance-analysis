@@ -1,3 +1,106 @@
+
+# 🛠️ Industrial Equipment Predictive Maintenance Analysis
+
+<p align="right">
+  <a href="#-english-version">🇺🇸 English</a> | 
+  <a href="#-한국어-버전">🇰🇷 한국어</a>
+</p>
+
+---
+
+## 🇺🇸 English Version
+
+This project focuses on predictive maintenance analysis using the **AI4I 2020 Predictive Maintenance Dataset**. It aims to identify equipment failure patterns, prioritize maintenance tasks, and assess operational risks through a combination of SQL-based analysis (PostgreSQL) and Python-based visualization.
+
+---
+
+## 1. Project Objectives
+* **ETL Pipeline:** Load equipment failure data into PostgreSQL and perform robust SQL analysis.
+* **Risk Identification:** Analyze failure risks based on machine type, tool wear, and torque conditions.
+* **Resource Optimization:** Establish criteria for prioritizing maintenance resources.
+* **Data Visualization:** Deliver intuitive insights through Python-based graphical analysis.
+
+## 2. Dataset & Tech Stack
+### Dataset: AI4I 2020 Predictive Maintenance
+* **Source:** UCI Machine Learning Repository
+* **Size:** 10,000 records
+* **Features:** Equipment type (L/M/H), Air/Process temperature, Rotational speed, Torque, Tool wear, and Failure labels.
+
+### Tech Stack
+* **Database:** PostgreSQL
+* **Languages:** SQL, Python 3.x
+* **Libraries:** Pandas, SQLAlchemy, Psycopg2, Matplotlib, Python-dotenv
+* **Tools:** VS Code, GitHub
+
+---
+
+## 3. Project Structure
+```text
+hanwha_maintenance_project/
+├─ data/          # Raw CSV dataset
+├─ output/        # Generated visualization plots
+├─ sql/           # SQL scripts (Schema, Validation, Analysis)
+├─ src/           # Python scripts (ETL, Analysis)
+├─ .env           # Environment variables (Database credentials)
+└─ README.md
+```
+---
+
+## 4. Implementation Workflow
+
+### Step 1: Schema Design & Table Creation
+Defined the `maintenance_raw` table in PostgreSQL using optimized data types to ensure high performance during complex analytical queries.
+* **Source:** `sql/01_create_table.sql`
+
+### Step 2: Data Loading (ETL)
+Developed a Python-based ETL pipeline to clean CSV headers, handle data type formatting, and perform bulk-loading into PostgreSQL using `SQLAlchemy`.
+* **Source:** `src/load_data.py`
+
+### Step 3: SQL-based Analysis
+Executed deep-dive analytical queries to identify failure patterns across multiple operational dimensions:
+* Overall failure metrics and breakdowns by equipment type.
+* Correlation between tool wear duration and failure probability.
+* Impact of torque fluctuations on machine stability.
+* **Source:** `sql/03_analysis.sql`
+
+---
+
+## 5. Key SQL Analysis Results
+
+### 📊 Overall Failure Metrics
+* **Total Failure Rate:** 3.39%
+* **Failure by Machine Type:**
+  * **Type L (Low):** 3.92% (Highest Risk)
+  * **Type M (Medium):** 2.77%
+  * **Type H (High):** 2.09%
+
+### ⚠️ Failure Modes (Count)
+1. **HDF (Heat Dissipation Failure):** 115 cases
+2. **OSF (Overstrain Failure):** 98 cases
+3. **PWF (Power Failure):** 95 cases
+4. **TWF (Tool Wear Failure):** 46 cases
+5. **RNF (Random Failure):** 19 cases
+
+### 🔧 Risk Factors
+* **Tool Wear:** The failure rate surges to **5.95%** once tool wear exceeds the **150-minute** threshold.
+* **Torque:** Critical risks are observed at extreme values—under 20Nm (**14.91%**) and over 60Nm (**41.84%**).
+
+---
+
+## 6. Key Insights & Strategy
+* **Segmented Maintenance:** Focus inspection resources on **Type L** equipment as they exhibit the highest failure probability.
+* **Threshold Management:** Establish a **150-minute tool wear limit** as a primary trigger for mandatory preventive maintenance.
+* **Early Detection:** Prioritize real-time monitoring for **Torque anomalies**, which serve as the strongest leading indicators of imminent failure.
+* **Root Cause Focus:** Optimize maintenance protocols specifically for **Heat Dissipation** and **Power/Overstrain** issues, which constitute the majority of failure events.
+
+---
+
+## 7. Future Work & Limitations
+* **Operational Constraints:** This project uses a public dataset and does not yet account for real-world variables such as maintenance crew shifts or spare part inventory.
+* **Expansion:** Future iterations will integrate a **Cost-Benefit Analysis** (downtime cost vs. maintenance cost) and **Machine Learning models** for real-time predictive failure alerts.
+
+## 🇰🇷 한국어 버전
+
 # Hanwha Maintenance Analysis
 
 ## 프로젝트 개요
@@ -165,93 +268,4 @@ src/analysis.py
 - 이후에는 정비 인력 수, 부품 재고, 다운타임 비용, 장비 중요도 같은 운영 요소를 추가해 더욱 현실적인 정비 우선순위 모델로 확장할 수 있습니다.
 - 향후에는 대시보드 형태의 시각화나 예측 모델링까지 연결해 프로젝트를 발전시킬 수 있습니다.
 
-# 🛠️ Hanwha Maintenance Analysis
 
-This project focuses on predictive maintenance analysis using the **AI4I 2020 Predictive Maintenance Dataset**. It aims to identify equipment failure patterns, prioritize maintenance tasks, and assess operational risks through a combination of SQL-based analysis (PostgreSQL) and Python-based visualization.
-
----
-
-## 1. Project Objectives
-* **ETL Pipeline:** Load equipment failure data into PostgreSQL and perform robust SQL analysis.
-* **Risk Identification:** Analyze failure risks based on machine type, tool wear, and torque conditions.
-* **Resource Optimization:** Establish criteria for prioritizing maintenance resources.
-* **Data Visualization:** Deliver intuitive insights through Python-based graphical analysis.
-
-## 2. Dataset & Tech Stack
-### Dataset: AI4I 2020 Predictive Maintenance
-* **Source:** UCI Machine Learning Repository
-* **Size:** 10,000 records
-* **Features:** Equipment type (L/M/H), Air/Process temperature, Rotational speed, Torque, Tool wear, and Failure labels.
-
-### Tech Stack
-* **Database:** PostgreSQL
-* **Languages:** SQL, Python 3.x
-* **Libraries:** Pandas, SQLAlchemy, Psycopg2, Matplotlib, Python-dotenv
-* **Tools:** VS Code, GitHub
-
----
-
-## 3. Project Structure
-```text
-hanwha_maintenance_project/
-├─ data/          # Raw CSV dataset
-├─ output/        # Generated visualization plots
-├─ sql/           # SQL scripts (Schema, Validation, Analysis)
-├─ src/           # Python scripts (ETL, Analysis)
-├─ .env           # Environment variables (Database credentials)
-└─ README.md
-```
----
-
-## 4. Implementation Workflow
-
-### Step 1: Schema Design & Table Creation
-Defined the `maintenance_raw` table in PostgreSQL using optimized data types to ensure high performance during complex analytical queries.
-* **Source:** `sql/01_create_table.sql`
-
-### Step 2: Data Loading (ETL)
-Developed a Python-based ETL pipeline to clean CSV headers, handle data type formatting, and perform bulk-loading into PostgreSQL using `SQLAlchemy`.
-* **Source:** `src/load_data.py`
-
-### Step 3: SQL-based Analysis
-Executed deep-dive analytical queries to identify failure patterns across multiple operational dimensions:
-* Overall failure metrics and breakdowns by equipment type.
-* Correlation between tool wear duration and failure probability.
-* Impact of torque fluctuations on machine stability.
-* **Source:** `sql/03_analysis.sql`
-
----
-
-## 5. Key SQL Analysis Results
-
-### 📊 Overall Failure Metrics
-* **Total Failure Rate:** 3.39%
-* **Failure by Machine Type:**
-  * **Type L (Low):** 3.92% (Highest Risk)
-  * **Type M (Medium):** 2.77%
-  * **Type H (High):** 2.09%
-
-### ⚠️ Failure Modes (Count)
-1. **HDF (Heat Dissipation Failure):** 115 cases
-2. **OSF (Overstrain Failure):** 98 cases
-3. **PWF (Power Failure):** 95 cases
-4. **TWF (Tool Wear Failure):** 46 cases
-5. **RNF (Random Failure):** 19 cases
-
-### 🔧 Risk Factors
-* **Tool Wear:** The failure rate surges to **5.95%** once tool wear exceeds the **150-minute** threshold.
-* **Torque:** Critical risks are observed at extreme values—under 20Nm (**14.91%**) and over 60Nm (**41.84%**).
-
----
-
-## 6. Key Insights & Strategy
-* **Segmented Maintenance:** Focus inspection resources on **Type L** equipment as they exhibit the highest failure probability.
-* **Threshold Management:** Establish a **150-minute tool wear limit** as a primary trigger for mandatory preventive maintenance.
-* **Early Detection:** Prioritize real-time monitoring for **Torque anomalies**, which serve as the strongest leading indicators of imminent failure.
-* **Root Cause Focus:** Optimize maintenance protocols specifically for **Heat Dissipation** and **Power/Overstrain** issues, which constitute the majority of failure events.
-
----
-
-## 7. Future Work & Limitations
-* **Operational Constraints:** This project uses a public dataset and does not yet account for real-world variables such as maintenance crew shifts or spare part inventory.
-* **Expansion:** Future iterations will integrate a **Cost-Benefit Analysis** (downtime cost vs. maintenance cost) and **Machine Learning models** for real-time predictive failure alerts.
